@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin : 0px;
+            padding: 0px;
+        }
+        .nav-container {
+            display: flex ;
+            list-style: none ;
+            background-color: darkslategray; 
+        }
+        nav > ul > li.nav-item {
+            padding: 15px;
+            cursor: pointer ;
+        }
+        nav > ul > li > a {
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+        /* a:hover 백그라운드컬러 변경 */ 
+        .nav-item:hover , li.active {
+            background-color: blueviolet ;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-container">
+            <li class="nav-item"><a href="#">Home</a></li>
+            <li class="nav-item"><a href="">About</a></li>
+            <li class="nav-item"><a href="">Services</a></li>
+            <li class="nav-item"><a href="">Contact</a></li>
+            <li class="nav-item"><a href="">Feedback</a></li>
+            <li class="nav-item active"><a href="">Help</a></li>
+        </ul>        
+    </nav>
+</body>
+</html>

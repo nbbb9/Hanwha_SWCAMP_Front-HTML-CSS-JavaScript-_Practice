@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- document -->
+    <button id="btn">SAVE</button>
+
+    <script>
+        /*
+        this : 본래 document 에 있는 컴포넌트를 지칭하는 키워드로 사용
+        this : 스크립트내에서 객체를 지칭하는 키워드 
+        만약, 화살표함수에서 this 상위스코프를 의미하게된다. 
+        */
+        const obj = {
+            name : "encore" , 
+            msg  : "sw camp 5th",
+            printThis() {
+                console.log("instance this >>> " , this);
+                const innerFunc = () => {
+                    return this ; 
+                };
+                console.log("innerFunc this >>> " , innerFunc()); 
+            }
+        }; 
+        console.log(">>> name , " , obj.name);
+        console.log(">>> msg  , " , obj.msg);
+        obj.printThis();
+
+        /////////////// setTimeout() : 클라이언트 폴링의 개념에서 사용됨. 
+        // setTimeout() this -> window 
+        const timeObj = {
+            name : "encore" , 
+            msg  : "sw camp 5th",
+            getThisArrowFunc : function() {
+                console.log("function , " , this); 
+                setTimeout( () => {
+                    console.log("arrow function , " , this); 
+                } , 1000 ); 
+            },
+            getFunc : function() {
+                console.log("function , " , this);
+                setTimeout( function() {
+                    console.log("this function , " , this); 
+                } , 1000 ); 
+            }     
+        };
+        console.log(">>>>>>>>> setTimeout this "); 
+        timeObj.getThisArrowFunc() ; 
+        timeObj.getFunc() ; 
+
+        const btn = document.getElementById("btn"); 
+        console.log(">>>> btn , " , btn.innerText );
+        btn.innerText = "함수호출버튼"
+
+        btn.addEventListener("click" , function() {
+            console.log(this === window);
+            console.log(">>>> "  , this.innerText); 
+        });
+
+        //////////////// Enhanced Object Literal 
+        // const literalObj = {
+        //     language : "javascript" , 
+        //     coding   : function(){
+        //         console.log("Hanwha SW Camp 5th");
+        //     }
+        // };
+        console.log(">>>>>> 속성과 값이 같으면 축약문법 사용이 가능");
+        let language = "javascript" ; 
+        const literalObj = {
+            language , 
+            coding() {
+                console.log("Hanwha SW Camp 5th");
+            }
+        };
+        console.log(literalObj.language);     
+        literalObj.coding() ; 
+
+        /////////// Spread Operator 
+        // { ... xxxx }
+        const spreadObj = {
+            name : "jslim" , 
+            age  : 20 , 
+            address : "seoul"
+        };
+        
+        const tmpObj = {
+            name : spreadObj.name , 
+            age  : spreadObj.age , 
+            address : spreadObj.address 
+        } ; 
+        console.log("기존복사방식 === " , tmpObj === spreadObj);
+        // 객체복사 
+        let spreadNewObj = {... spreadObj } ;
+        console.log("spread operator  , " , spreadObj ) ; 
+        console.log("spread operator  , " , spreadNewObj ) ;
+        console.log("obj === " , spreadObj === spreadNewObj);
+
+        const spreadAry = [spreadObj , spreadObj , spreadObj ] ; 
+        let spreadNewAry = {... spreadAry } ; 
+        console.log("ary === " , spreadAry === spreadNewAry);
+
+        // 구조분해문법(Destructuring)
+        /*
+        vue.js
+        import { a , b } from  xxxxx.js(a(), b(), c(), d()) 
+        */ 
+
+        const destructObj = {
+            a : 10 , b : 20 , c : 30 
+        };
+        const destructAry = [1,2,3,4,5] 
+        
+        let { a , b} = destructObj ; 
+        console.log("Destructuring >>>>>>> obj , " , a); 
+        console.log("Destructuring >>>>>>> obj , " , b); 
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

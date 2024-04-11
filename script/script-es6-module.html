@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    모듈화
+    - import , export : 자바스크립트를 모듈화  
+    - (export 변수, 함수).js
+    - (import { 불러올 함수 또는 변수 } from 'xxxxx.js').js ; 
+    -->
+
+    <script src="../assert/js/sample.js"></script>
+    <script src="../assert/js/app.js" type="module" defer></script>
+    
+    <script>
+        console.log(">>>>>>>>>>> module ");
+        console.log(">>>>> " , showMsg());
+        
+        ////////////////////////// 문자열 할당방식의 차이(널 병합 연산자) 
+        // 기존코드의 문자열 할당 방식 
+        function showTitle(txt) {
+            let text = txt ; 
+            if( text == null || text == undefined ) {
+                text = "forward Vue.js" ; 
+            }
+            console.log(text);
+        } 
+        showTitle();
+        showTitle("encore"); 
+        // 널 병합 연산자(??)를 이용한 방식 
+        function printTitle(txt) {
+            let text = txt ?? "forward Vue.js" ;  
+            console.log(text);
+        }
+        printTitle();
+        printTitle("encore");  
+    </script>
+
+</body>
+</html>

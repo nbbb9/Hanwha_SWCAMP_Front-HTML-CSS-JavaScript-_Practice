@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <script>
+        /* 
+        변수 : 선언시점에는 타입이 존재하지 않지만 값이 할당되는 시점에 변수의 타입이 결정
+        - var(함수스코프) , let(블록스코프) , const(블록스코프)
+        - 호이스팅
+        - 
+        */
+        console.log(">>>>>>>>> 스크립트 시작");
+        let msg = "Encore SW Camp 5th :-)" ;  
+        console.log(msg);
+        console.log("변수의 타입을 체크하는 typeof " , typeof msg) ; 
+        msg = "reassign" ; 
+        console.log(msg);
+
+        console.log(">>> 스크립트 변수 타입 정의 <<<"); 
+        console.log("문자, 숫자, 논리, 배열, 객체, 함수 ....."); 
+        let userId  = "10" ;  
+        console.log("userId" , typeof userId) ;
+        let userAge = 10 ; 
+        console.log("userAge" , typeof userAge) ;
+        console.log("=="  , userId == userAge) ; 
+        console.log("===" , userId === userAge) ;
+        let isMarried = true ; 
+        console.log("isMarried" , typeof isMarried) ; 
+        userId = "true" ; 
+        console.log("== "  , userId == isMarried) ; 
+        console.log("=== "  , userId === isMarried) ; 
+        let nowDate = new Date() ; 
+        console.log("nowDate : " , typeof nowDate) ; 
+        let userObj = {
+            name : "jslim" , age : 100 , isMarried : true
+        };
+        console.log("userObj type : " , typeof userObj) ;
+        console.log("userObj name : " , userObj.name); 
+        console.log("userObj name : " , userObj['name']); 
+        
+        let userAry = [userObj, userObj, userObj] ;
+        console.log("userAry type : " , typeof userAry) ;
+        for(let idx = 0 ; idx < userAry.length ; idx++) {
+            let user = userAry[idx] ; 
+            console.log("user : " , user);  
+        }
+        console.log(">>>>>>>>> for .. in ");
+        for(let key in userObj) {
+            console.log("key = " , key  , " data = " , userObj[key]); 
+        }
+        console.log(">>>>>>>>> for .. of 열거가능한 객체");
+        let ary = ['apple' , 'orange' , 'banana'];
+        for(let value of userAry) {
+            console.log(" data = " , value.name); 
+        }
+        //////////////////////////////////////
+        var   number01 ;
+        const number02 = 10;
+        let   number03 ;  
+        console.log("number01 = " , number01);
+        console.log("number02 = " , number02);
+        console.log("number03 = " , number03);
+        ///////////////////////////////////////
+        console.log("const 의 재할당? "); 
+        const userInfo = { userId : "" , userAge : 0 , userHobby : "" }; 
+        // 값을 재할당해본다면?
+        console.log(userInfo);
+        userInfo.userId    = "jslim" ; 
+        userInfo.userAge   = 20 ; 
+        userInfo.userHobby = "watching movie"; 
+        console.log(userInfo);
+        // 객체가 가지는 기본 데이터 이외에 추가하고 싶은 데이터를 추가할 수 있다. 
+        userInfo.isMarried = true ; 
+        console.log(userInfo);
+
+        function reallocation(msg) {
+            console.log(`>>>>>>>>>>>> function call , ${msg}`) ;                   
+        }
+        let func = reallocation ; 
+        console.log("func type : " , typeof func) ;
+        reallocation("by encore");
+        func("feat. jslim") ; 
+        ////////////////// Scope 
+        function currentNum() {
+            if(5 > 4) {
+                var   num01 = 1 ; 
+                const num02 = 2 ; 
+                let   num03 = 3 ; 
+                console.log("inner if , ", num01, "\t" , num02 , "\t" , num03);
+            }
+            // scope 문제로 에러발생
+            //console.log("outter if , " , num01, "\t" , num02 , "\t" , num03);
+        } 
+        currentNum();
+        //////////////
+    </script>
+</body>
+</html>
+
+

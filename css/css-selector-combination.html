@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        css : 구조(html)에 표현을 입히는 작업 
+        css 구성 : 선택자(Selector) , 속성(Property) , 속성값(Value)
+        css 적용 위치 : inline(태그) , internal(내부스타일) , external(외부스타일) - link
+        css 문법이 형식 : Selector { 속성 : 속성값 ; 속성 : 속성값 ; ... }
+        기본 선택자 : 
+        - 전체선택자   : * 
+        - 타입선택자   : 태그{속성선언}
+        - 클래스선택자 : .클래스이름{속성선언} 
+        - 아이디선택자 : #아이디{속성선언} 
+        - 속성선택자   : [속성]{속성선언}
+    -->
+    <style>
+        /* * {
+           color:  red ; 
+           background-color: yellow;
+           font-size: 13px; 
+        } */
+
+        /* h1{
+            background-color: yellow ;
+        }
+        h2{
+            background-color: green ;
+        }
+        h3{
+            background-color: pink ;
+        }
+        p{
+            color: red ;
+        } */
+
+        h1.class01 {
+            color: blue ;
+        }
+        h1#id01 {
+            color: blueviolet ; 
+        }
+        h1[text] {
+            color :aqua ; 
+            background-color: gray ;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 class="class01">Universal Selector</h1>
+    <h1 id="id01">Universal Selector</h1>
+    <h1 text="attr01">Universal Selector</h1>
+    <h2>모두 같은 색상, 같은 크기</h2>
+    <h3>전체적으로 동시에 스타일 적용</h3>
+    <p>모든 태그에 적용됨</p> 
+</body>
+</html>

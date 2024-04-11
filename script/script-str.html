@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 문자열 내장객체의 함수 
+        let str = "뜰에 뜰에 뜰에는 망아지가 있다." ; 
+        console.log("indexOf    , " , str.indexOf('망'));
+        console.log("startsWith , " , str.startsWith('망아지'));
+        console.log("startsWith , " , str.endsWith('다'));
+        console.log("charAt     , " , str.charAt(1) , typeof str.charAt(1));
+        console.log("substr     , " , str.substr(6, 3) );
+        console.log("substring  , " , str.substring(6, 9) );
+        console.log("slice      , " , str.substring(6, 9) );
+        console.log("length     , " , str.length );
+        console.log("concat     , " , str.concat(' 맛점하세요~~~') );
+        
+        // Array 
+        // push , pop , shift 
+        let ary = [] ; 
+        ary.push(1);ary.push(2);ary.push(3);
+        console.log(ary.shift());
+        console.log(ary.shift());
+        console.log(ary.shift());
+        
+    </script>
+</body>
+</html>

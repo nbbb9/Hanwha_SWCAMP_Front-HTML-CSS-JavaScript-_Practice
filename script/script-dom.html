@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- jQuery script CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .text-red{
+            color : red ;
+        }
+        .text-blue {
+            color : blue ; 
+        }
+    </style>
+</head>
+<body>
+    
+    <span id="timeSpan"></span>
+    
+    <ul id="list">
+        <li><a href="google.com" class="link">google</a></li>
+        <li><a href="naver.com"  class="link">naver</a></li>
+        <li><a href="encore.com" class="external">encore</a></li>
+        <li><a href="encore.com" class="external">hanwha</a></li>
+    </ul>
+
+    <form>
+        <label for="time">시간 : </label>
+        <input id="time" name="time" type="text"/>
+    </form>
+
+    <hr/>
+
+    <form>
+        <label for="food">점심시간에 먹을 음식?</label>
+        <select id="food" name="food">
+            <option value="햄버거">햄버거</option>
+            <option value="국밥">국밥</option>
+            <option value="중화요리">중화요리</option>
+        </select>
+    </form>
+
+    <hr/>
+    <div id="result_text" onclick="redClick()">
+        <p class="text-red">Encore</p>
+    </div>
+    <div id="result_html" onclick="blueClick()">
+        <p class="text-blue">Hanwha</p>
+    </div>
+
+    <script>
+        let current = new Date() ;
+        console.log(">>> " , current.toLocaleString() ); 
+        // let result = document.querySelector("#timeSpan");
+        let result = document.getElementById("timeSpan");
+        console.log(result) ;  
+        // 출력속성 innerHTML , textContent 
+        result.textContent = current.toLocaleString() ; 
+        console.log(">>>>>>>>>>> getElementsByTagName() "); 
+        const list = document.getElementsByTagName("a") ;
+        console.log("list >>>> , " , typeof list ); 
+        for(var idx=0 ; idx < list.length ; idx++) {
+            console.log( list[idx].innerHTML );
+            console.log( list[idx].href ); 
+            
+            list.item(idx).href = "jslim.com";
+            // item() : 노드를 취득하는 역할 
+            console.log( list.item(idx).href );  
+        }
+        //////////////////////
+        console.log(">>>>>>>> name 속성을 키로해서 요소에 접근"); 
+        // var nameTime = document.getElementsByName("time") ; 
+        // nameTime[0].value = `현재시간 : ${current.toLocaleString()}` ;  
+        var nameTime = document.querySelector("body > form > input");
+        console.log(nameTime);
+        nameTime.value = `현재시간 : ${current.toLocaleString()}` ; 
+        //////////////////////
+        console.log(">>>>>>>> class 속성으로 요소에 접근"); 
+        var links = document.getElementsByClassName("link");
+        console.log("length , " , links.length);
+        for(var idx=0 ; idx < links.length ; idx++) {
+            console.log( links.item(idx).href ); 
+        }
+        /////////////////////////////////////
+        // querySelector() : 요소 하나만 리턴, querySelectorAll() : NodeList 리턴
+        // css 선택자를 동일하게 사용할 수 있다. 
+        // class=external 접근해서 href 속성을 출력해본다면?
+        var node = document.querySelectorAll("#list .external");
+        console.log(node[0].textContent); 
+        console.log(node[1].textContent); 
+        
+        // Node working......
+        // 자식의 접근 : childNodes 
+        // 요소노드 : 1 , 속성노드 : 2 , 텍스트노드 : 3 .....
+        // [실습] id=food 접근해서 하위요소가 가지고 있는 텍스트를 콘솔에 출력
+        
+        /*
+        var options = document.querySelectorAll("#food option"); 
+        console.log("length , " , options.length ); 
+        for(var idx=0 ; idx < options.length ; idx++) {
+            console.log( options.item(idx).textContent ); 
+        }
+        */
+        var food  = document.getElementById("food"); 
+        console.log("has child , " + food.hasChildNodes() ) ;
+        var child = food.firstChild ;  
+        while(child) {
+            if(child.nodeType === 1) {
+                console.log(child.value) ;
+            }
+            child = child.nextSibling ; 
+        }
+        // console.log("has child , " + food.hasChildNodes() ) ;
+        // var opts = food.childNodes ; 
+        // console.log("opts length , " + opts.length);
+        // for(var idx=0 ; idx < opts.length ; idx++) {
+        //     var opt = opts.item(idx);
+        //     console.log("nodeType , " , opt.nodeType);
+        //     if( opt.nodeType === 1) {
+        //         console.log(opt.value) ; 
+        //     }
+        // }
+        
+        ///////////////////////////////
+        // 속성값 취득 : getAttribute(속성) , setAttribute(속성, 값) ;
+        
+        function redClick() {
+            // var div = document.querySelector("#result_text");
+            // div.innerHTML = "<input type='text'>" ; 
+            
+            // JQuery text(), html(), append();
+            // $("#result_text").text("<input type='text'>"); 
+
+            var p = document.querySelector("#result_text p");
+            p.setAttribute("class" , "text-blue");
+        }
+        function blueClick() {
+            var p = document.querySelector("#result_html p");
+            p.setAttribute("class" , "text-red");
+        }
+        
+
+    </script>
+
+</body>
+</html>

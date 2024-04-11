@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+    /* box-sizing: border-box; */
+    margin : 10px;
+    padding : 10px;
+}
+
+#parent {
+    display: flex;
+    flex-direction: row;
+    border : 3px solid red;
+    flex-wrap: wrap;
+}
+
+.child {
+    /* 
+    flex : <grow (팽창 지수)> <shrink (수축 지수)> <basis (기본 크기)> 
+    
+        */
+    flex: 1 0 auto;
+    border : 3px solid green;
+}
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="child">box1</div>
+        <div class="child">box2</div>
+        <div class="child">box1</div>
+        <div class="child">box2</div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        조합 선택자 형식 : 
+        - 후손       : 선택자A   선택자B  : 선택자B가 선택자A에 반드시 포함되어 있는 경우에만 선택
+        - 자손(직계) : 선택자A > 선택자B   : 부모선택자A에 직계 자손인 선택자B를 선택 
+        - 인접 형제  : 선택자A  + 선택자B  : 선택자A 바로 다음에 위치한 선택자B 선택하는 것 
+        - 일반 형제  : 선택자A  ~ 선택자B
+        - 그룹       : 선택자A  , 선택자B
+    -->
+    <style>
+        /* 후손 선택자 */
+        div ul {
+            color: red ; 
+        }
+        div h2 {
+            color:  yellowgreen ; 
+            background-color: purple ;
+        }
+        /* 자손 선택자 */
+        body > div > h3 {
+            color: red ;
+        }
+
+        body > h3 > sno {
+            color : blue;
+        }
+
+        /* 인접|일반 형제 선택자(+) */
+        body > div#adjacent > h4 ~ ul {
+            color : blue ;
+        }
+        
+        /* 그룹 */
+        p, h6 {
+            color: aquamarine ; 
+            background-color: yellowgreen;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <h2>후손(Descendant Selector)선택자</h2>
+        <ul>
+            <li>후손(01)</li>
+            <li>후손(02)</li>
+        </ul>
+    </div>
+    <h2>Descendant Selector</h2>
+    
+    <hr/>
+    <div>
+        <h3>자손 선택자(Child Selector)</h3>
+    </div>
+    <p>자손 선택자</p> 
+    <h3>
+        <sno>1992</sno><br/>
+        <std>임정섭</std><br/>
+        <tel>
+            <office>02-xxxx-xxxx</office><br/>
+            <phone>010-xxxx-xxxx</phone><br/>
+        </tel>
+    </h3>
+    
+    <hr/>
+    <!-- 인접형제(+) -->
+    <div id="adjacent">
+        <h4>인전형제(+)</h4>
+        <h5>인전형제(+)</h5>
+        <ul>
+            <li>대분류</li>
+            <li>중분류</li>
+            <li>소분류</li>
+        </ul>
+    </div>
+    <p>인전형제 선택자에 의한 스타일 적용</p>
+    <h6>Adjacent Selector</h6> 
+</body>
+</html> 
+
